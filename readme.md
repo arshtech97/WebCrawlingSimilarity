@@ -28,6 +28,11 @@ This project does webscraping for a given website and leverages vectorDB like we
     5. Set your 2 inputs in the index.ts file, 1. websiteName(String), 2. keyword(String)
     6. Run the project using "npm start"
 
+## High Level Diagram
+![HLD](https://github.com/arshtech97/WebCrawlingSimilarity/blob/highlevel/HighLevelDesign.png?raw=true)
+
+
+
 ## Configurations
 - Here two 3rd Party APIs are being used:
     - huggingface(for inference model which helps in deciding vector weights for a given text/query)
