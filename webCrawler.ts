@@ -1,5 +1,9 @@
 import * as puppeteer from "puppeteer";
 
+function removeNonAlphanumeric(input: any) {
+    return input.replace(/[^a-zA-Z0-9\s]/g, '');
+}
+
 // In Future can extend this to crawl every page in the website heirarchy for now it crawls on a single page
 async function crawlWebsite(websiteUrl: any){
     const browser = await puppeteer.launch();
@@ -19,7 +23,7 @@ async function crawlWebsite(websiteUrl: any){
     console.log(textContent);
     // Sanitize the data
     // 1. Remove the empty strings, trim the strings.
-    let result = textContent?.split("\n").filter(str => str.trim() !== "").map(str => str.trim());
+    let result = textContent?.split("\n").filter(str => str.trim() !== "").map(str => str.trim()).map(str => removeNonAlphanumeric(str));
     browser.close();
     return result?.map(str => ({"website": websiteUrl, "data": str}));
 }
